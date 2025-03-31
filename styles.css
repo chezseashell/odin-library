@@ -8,26 +8,34 @@
 
 body {
 font-family: "Source Sans 3", sans-serif;
-margin: 15px;
+margin: 30px;
+background-color: #191815;
+font-size: 16px;
 
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }
 
 .container {
 max-width: 1000px;
-background-color: antiquewhite;
+background-color: #F1EEE3;
 border-radius: 20px;
-
 margin: auto;
-
-
+height: 100vh;
 }
 
 .header {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
     justify-content: space-between;
-    align-items: end;
-    padding:15px;
+    align-items: center;
+    padding:30px;
 }
 
 .header-img {
@@ -43,7 +51,9 @@ margin: auto;
 
 .header-right {
     display: flex;
-    justify-content: flex-end;}
+    justify-content: flex-end;
+}
+
 .header-right > button {
     margin: 0;
     width: 50px;
@@ -53,4 +63,76 @@ margin: auto;
     -moz-border-radius: 50%;
     background-color: black;
     color: #f1f1f1;
+    border: none;
+
+
 }
+
+.header-right > .material-symbols-outlined {
+    color: #f1f1f1;
+}
+
+.content {
+    padding: 0 30px 30px 30px;
+}
+.content > h1 {
+    font-family: "EB Garamond", serif;
+    font-weight: 400;
+}
+
+.content > h1 strong {
+    color: #a64e10;
+    font-weight: 400;
+}
+
+
+
+
+.content div button {
+    background-color: #191815;
+    border: none;
+    color:#f1f1f1;
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    margin-top: 20px;
+    max-height: 35px;
+    font-weight: 500;
+    font-size: .9rem;
+}
+
+.content .material-symbols-outlined {
+    margin-right: 7px;
+    font-size: 1.3rem;
+}
+
+.star-rating {
+    position: relative;
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: 0 -0.25rem;
+  }
+
+  .star-rating input {
+    position: absolute;
+    opacity: 0;
+  }
+  
+  .star-rating label {
+    cursor: pointer
+    color: grey;
+    padding: 0 0.25rem;
+    transition: color 0.15s;
+  }
+
+  .star-rating input:checked ~ label {
+    color: gold;
+  }
+
+  .star-rating input:hover ~ label {
+    color: goldenrod;
+    transition: none;
+  }
