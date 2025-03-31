@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+font-family: "Source Sans 3", sans-serif;
+margin: 15px;
+
+}
+
+.container {
+max-width: 1000px;
+background-color: antiquewhite;
+border-radius: 20px;
+
+margin: auto;
+
+
+}
+
+.header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    align-items: end;
+    padding:15px;
+}
+
+.header-img {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    background:   url(./images/profileImg.png ) no-repeat;
+    background-size: cover;
+}
+
+.header-right {
+    display: flex;
+    justify-content: flex-end;}
+.header-right > button {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    background-color: black;
+    color: #f1f1f1;
+}
