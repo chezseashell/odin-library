@@ -1,14 +1,25 @@
+const newBookBtn = document.querySelector('#newBook');
+const closeFormBtn = document.querySelector('#cancelBtn');
+const subimitBookBtn = document.querySelector('#submitBtn');
+const newBookModal = document.querySelector('#formContainer');
+const contentHeader = document.querySelector('#contentHeader');
+const libraryContainer = document.querySelector('#libraryContainer');
+const bookDivId = document.querySelector('#bookDivId');
+
+// Array to store all book objects
 let myLibrary = [];
 
+// Book constructor
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
     this.id = crypto.randomUUID();
-
 }
 
+
+//take parameters, create a book and push it to the myLibrary array
 function makeNewBookInstance() {
     const title = document.querySelector('#title');
     const author = document.querySelector('#author');
@@ -16,14 +27,14 @@ function makeNewBookInstance() {
     let read = true;
     const readCheckbox = document.querySelector('#read');
 
-    /* check to see if checkbox is checked */
+    // check to see if checkbox is checked
     if (readCheckbox.checked) {
         read = true;
     } else {
         read = false;
     }
 
-    /* check to see if all input are filled out */
+    // check to see if all input are filled out
     if (title.value && author.value && pages.value) {
         const newBook = new Book(title.value, author.value, pages.value, read);
             console.log("My new book is " + title.value + " by author " + author.value + " with " + pages.value + " I have read this book: " + read)
@@ -32,24 +43,20 @@ function makeNewBookInstance() {
     } else {
         alert("Please fill out all fields")
     }
-
-
 };
 
+
+// create a div for each new book in library and add it to libraryContainer
 function createLibraryDivs(library) {
+
+    
     for (let i=0; i < library.length; i++) {
         const currentObject = library[i];
-        console.log(`object at index ${i}`);
         var newBookdiv = document.createElement('div');
         newBookdiv.innerHTML = ``;
 
         for(const key in currentObject) {
             if (currentObject.hasOwnProperty(key)) {
-                console.log(`  ${key}: ${currentObject[key]}`);
-                
-
-
-
                 var bookInfo = document.createElement('div');
                 bookInfo.innerHTML = `
                     <p>${key}:</p>
@@ -57,41 +64,70 @@ function createLibraryDivs(library) {
                     `
                 bookInfo.classList.add("bookInfo")
                 newBookdiv.appendChild(bookInfo)
-                
-
               }
         }
 
+        //add delete button to newBookdiv
+        const deleteBook = document.createElement('div');
+        deleteBook.innerHTML = `
+        <button class="deleteBtn" data-book-id="${currentObject.id}" type="button">
+            <i class="material-symbols-outlined">delete</i>
+            Delete
+        </button>
+            `;
 
+        newBookdiv.appendChild(deleteBook);
+        newBookdiv.id = currentObject['id'];
+        newBookdiv.classList.add('bookDiv');
 
-        libraryContainer.appendChild(newBookdiv)
-        newBookdiv.classList.add('bookDiv')
     }
+    libraryContainer.appendChild(newBookdiv)
 
-    
-
+    addDeleteEventListeners();
 
 };
 
-const newBookBtn = document.querySelector('#newBook');
-const closeFormBtn = document.querySelector('#cancelBtn');
-const subimitBookBtn = document.querySelector('#submitBtn');
-const newBookModal = document.querySelector('#formContainer');
-const contentHeader = document.querySelector('#contentHeader');
-const libraryContainer = document.querySelector('#libraryContainer');
 
+// Handle Delete button clicks for books from library
+function addDeleteEventListeners() {
+    const deleteButtons = document.querySelectorAll('.deleteBtn');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const bookId = e.target.closest('button').getAttribute('data-book-id');
+            //Remove from array
+            myLibrary = myLibrary.filter(book => book.id !== bookId);
+            //Remove from DOM
+            const bookDiv = document.getElementById(bookId);
+            if (bookId) {
+                bookDiv.remove();
+            }
+        })
+    })
+}
+
+
+// clear new-book-form fields, applied to submit button event listener
+function clearForm() {
+    document.forms['new-book-form'].reset();
+}
+
+// open new-book-form and hide contentHeader
 function addNewBookForm() {
     newBookModal.classList.remove('modalClose');
     contentHeader.classList.add('modalClose');
+
+
 };
 
+
+// close new-book-form and show contentHeader
 function closeNewBookForm() {
     contentHeader.classList.remove('modalClose');
     newBookModal.classList.add('modalClose');
 }
 
 
-
+// Event listeners ----->
 
 newBookBtn.addEventListener('click', ()=> {
     addNewBookForm();
@@ -103,14 +139,17 @@ closeFormBtn.addEventListener('click', () => {
 })
 
 
-subimitBookBtn.addEventListener('click', () => {
-
+subimitBookBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     makeNewBookInstance();
     createLibraryDivs(myLibrary);
+    clearForm();
     contentHeader.classList.remove('modalClose');
     newBookModal.classList.add('modalClose');
+
+
     
-})
+});
 
 
 

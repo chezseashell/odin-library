@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
+:root {
+    --colorAccent: #cb7052;
+    --black: #191815;
+    --white: #f1f1f1;
+    --tan: #F1EEE3;
+}
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +15,7 @@
 body {
 font-family: "Source Sans 3", sans-serif;
 margin: 30px;
-background-color: #191815;
+background-color: var(--black);
 font-size: 16px;
 
 }
@@ -25,7 +31,7 @@ font-size: 16px;
 
 .container {
 max-width: 1000px;
-background-color: #F1EEE3;
+background-color: var(--tan);
 border-radius: 20px;
 margin: auto;
 height: 100vh;
@@ -61,15 +67,15 @@ height: 100vh;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
-    background-color: black;
-    color: #f1f1f1;
+    background-color: var(--black);
+    color: var(--white);
     border: none;
 
 
 }
 
 .header-right > .material-symbols-outlined {
-    color: #f1f1f1;
+    color: var(--white);
 }
 
 .content {
@@ -82,7 +88,7 @@ height: 100vh;
 }
 
 .content-header > h1 strong {
-    color: #a64e10;
+    color: var(--colorAccent);
     font-weight: 400;
 }
 
@@ -131,9 +137,9 @@ height: 100vh;
   }
 
 #newBook {
-    background-color: #191815;
+    background-color: var(--black);
     border: none;
-    color:#f1f1f1;
+    color:var(--white);
     padding: 10px 20px 10px 20px;
     display: flex;
     justify-content: center;
@@ -147,9 +153,9 @@ height: 100vh;
 
 
 .content div button {
-    background-color: #191815;
+    background-color: var(--black);
     border: none;
-    color:#f1f1f1;
+    color:var(--white);
     padding: 10px 20px 10px 20px;
     display: flex;
     align-items: center;
@@ -171,12 +177,12 @@ height: 100vh;
 
 .formButtons button:first-of-type {
     background-color: #E7E0CB;
-    color: #191815;
+    color: var(--black);
 }
 
 .formButtons button:hover {
-    background-color: #993e0a;
-    color:#f1f1f1;
+    background-color: var(--colorAccent);
+    color:var(--white);
 }
 
 
@@ -217,7 +223,7 @@ height: 100vh;
   }
 
   .containerCheckmark input:checked ~ .checkmark {
-    background-color: #191815;
+    background-color: var(--black);
   }
 
   .checkmark:after {
@@ -232,7 +238,7 @@ height: 100vh;
   .containerCheckmark .checkmark:after {
     width: 4px;
     height: 9px;
-    border: solid white;
+    border: solid var(--white);
     border-width: 0 2px 2px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -242,18 +248,35 @@ height: 100vh;
 .bookDiv {
     max-width: 500px;
     margin-top: 30px;
-
   }  
+
+  #libraryContainer h3 {
+    font-weight: 400;
+    margin-top: 50px;
+    color: var(--colorAccent);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--black);
+
+  }
 
   .bookInfo {
     display: flex;
     gap:20px;
     justify-content: flex-start;
     align-items: center;
-    border: 1px solid #black;
   }
 
   .bookInfo p:first-of-type {
     font-weight: 600;
 
+  }
+
+  .bookDiv .deleteBtn {
+    background-color: #E7E0CB;
+    color: var(--black);
+  }
+
+  .deleteBtn:hover {
+    background-color: var(--colorAccent);
+    color:var(--white);
   }
