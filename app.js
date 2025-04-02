@@ -6,21 +6,45 @@ function Book(title, author, pages, pubDate, read) {
     this.pages = pages;
     this.pubDate = pubDate;
     this.read = read;
+    this.id = crypto.randomUUID();
+
 }
 
-function addBookToLibrary(title, author, pages, pubDate, rating, read) {
-    const newBook = new Book(title, author, pages, pubDate, rating, read){
+// function addBookToLibrary(title, author, pages, pubDate, rating, read) {
+//     const newBook = new Book(title, author, pages, pubDate, rating, read){
 
-    }
+//     }
 
-    myLibrary.append(newBook)
+//     myLibrary.append(newBook)
+// }
+
+const newBookBtn = document.querySelector('#newBook');
+const closeFormBtn = document.querySelector('#cancelBtn');
+const subimitBookBtn = document.querySelector('#submitBtn');
+const newBookModal = document.querySelector('#formContainer');
+const contentHeader = document.querySelector('#contentHeader');
+
+function addNewBookForm() {
+    newBookModal.classList.remove('modalClose');
+    contentHeader.classList.add('modalClose');
+};
+
+
+
+function closeNewBookForm() {
+    contentHeader.classList.remove('modalClose');
+    newBookModal.classList.add('modalClose');
 }
 
-const addNewBookBtn = document.getElementById('#new-book-btn');
+newBookBtn.addEventListener('click', ()=> {
+    addNewBookForm();
+});
 
 
-addNewBookBtn.addEventListener('click', () => {
-    const newBookInputDiv = `
-
-    `
+closeFormBtn.addEventListener('click', () => {
+    closeNewBookForm();
 })
+
+
+
+
