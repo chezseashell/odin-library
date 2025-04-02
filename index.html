@@ -6,57 +6,60 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />    <body>
-    <div class="container">
-        <div class="header">
-            <div class="header-img"></div>
-            <div class="header-right">
-                <button><i class="material-symbols-outlined">
-                    notifications</i></button>
-            </div>
-        </div>
-        <div class="content">
 
-            <div id="formContainer" class="modalClose">
-                <form id="new-book-form" >
-                    <h3>Book Details</h3>
-                    <div>
-                        <label for="title">Title:</label>
-                        <input type="text" id="title" name="title" required>
-                    </div>
-                    <div>
-                        <label for="author">Author:</label>
-                        <input type="text" id="author" name="author" required>
-                    </div>
-                    <div>
-                        <label for="pages">Number of Pages:</label>
-                        <input type="int" id="pages" name="pages" required>
-                    </div>
-                    <div id="check">
-                        <label class="containerCheckmark" for="read">I have already read this book:
-                            <input type="checkbox" id="read" name="read" value="yes" checked="checked" required>
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="formButtons">
-                        <button id="cancelBtn" ><i class="material-symbols-outlined">close</i>Cancel</button>
-                        <button id="submitBtn" type="submit"><i class="material-symbols-outlined">add</i>Add Book</button>
-                    </div>
+</head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="header-img"></div>
+                <div class="header-right">
+                    <button><i class="material-symbols-outlined">
+                        notifications</i></button>
+                </div>
+            </div>
+            <div class="content">
 
-                </form>
-            </div>
-            <div id ="contentHeader" class="content-header">
-                <h1>Hey, <strong>Rachel!</strong></h1>
-                <h1>Check out your personal library.</h1>
-                <button id="newBook"><i class="material-symbols-outlined">add</i>New Book</button>
-            </div>
-            <div id="libraryContainer">
-                <h3>My Library</h3>
+                <div id="formContainer" class="modalClose">
+                    <form id="new-book-form" >
+                        <h3>Book Details</h3>
+                        <div>
+                            <label for="title">Title:</label>
+                            <input type="text" id="title" name="title" required>
+                        </div>
+                        <div>
+                            <label for="author">Author:</label>
+                            <input type="text" id="author" name="author" required>
+                        </div>
+                        <div>
+                            <label for="pages">Number of Pages:</label>
+                            <input type="int" id="pages" name="pages" required>
+                        </div>
+                        <div id="check">
+                            <label class="containerCheckmark" for="read">I have already read this book:
+                                <input type="checkbox" id="read" name="read" value="yes" checked="checked" required>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="formButtons">
+                            <button id="cancelBtn" ><i class="material-symbols-outlined">close</i>Cancel</button>
+                            <button id="submitBtn" type="submit"><i class="material-symbols-outlined">add</i>Add Book</button>
+                        </div>
+
+                    </form>
+                </div>
+                <div id ="contentHeader" class="content-header">
+                    <h1>Hey, <strong>Rachel!</strong></h1>
+                    <h1>Check out your personal library.</h1>
+                    <button id="newBook"><i class="material-symbols-outlined">add</i>New Book</button>
+                </div>
+                <h3 id="myLibrary">My Library</h3>
+
+                <div id="libraryContainer">
+                </div>
             </div>
             
-            
         </div>
-    </div>
+    </body>
     
-</body>
 <script src="app.js"></script>
 </html>
