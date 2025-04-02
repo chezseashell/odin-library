@@ -238,3 +238,22 @@ height: 100vh;
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+.bookDiv {
+    max-width: 500px;
+    margin-top: 30px;
+
+  }  
+
+  .bookInfo {
+    display: flex;
+    gap:20px;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #black;
+  }
+
+  .bookInfo p:first-of-type {
+    font-weight: 600;
+
+  }
