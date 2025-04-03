@@ -18,6 +18,10 @@ function Book(title, author, pages, read) {
     this.id = crypto.randomUUID();
 }
 
+Book.prototype.toggleRead = function() {
+    this.read = !this.read;  // Simply flips true to false or false to true
+};
+
 
 //take parameters, create a book and push it to the myLibrary array
 function makeNewBookInstance() {
@@ -67,6 +71,36 @@ function createLibraryDivs(library) {
               }
         }
 
+
+        //add button for read status
+        if (currentObject.read === true) {
+            const readButton = document.createElement('div');
+        readButton.innerHTML = `
+        <div>
+            <i class="material-symbols-outlined">select_check_box</i>
+            Read
+        <div>
+        `
+        newBookdiv.appendChild(readButton);
+        readButton.classList.add('readBtn');
+        readButton.nodeType='button';
+        readButton.id = "readTrue";
+
+        } else {
+            const readButton = document.createElement('div');
+        readButton.innerHTML = `
+            <div>
+            <i class="material-symbols-outlined">check_box_outline_blank</i>
+            Not Read
+            <div>
+        `
+        newBookdiv.appendChild(readButton);
+        readButton.classList.add('readBtn');
+        readButton.nodeType='button';
+        readButton.id ="readFalse";
+        }
+        
+
         //add delete button to newBookdiv
         const deleteBook = document.createElement('div');
         deleteBook.innerHTML = `
@@ -77,13 +111,20 @@ function createLibraryDivs(library) {
             `;
 
         newBookdiv.appendChild(deleteBook);
+
+
+
         newBookdiv.id = currentObject['id'];
         newBookdiv.classList.add('bookDiv');
+
+
+
 
     }
     libraryContainer.appendChild(newBookdiv)
 
     addDeleteEventListeners();
+    toggleReadStatus();
 
 };
 
@@ -103,6 +144,47 @@ function addDeleteEventListeners() {
             }
         })
     })
+}
+
+// Handle Toggle for read status buttons
+function toggleReadStatus() {
+    const readButtons = document.querySelectorAll('.readBtn');
+    
+    readButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            // Get the button element regardless of where in the button was clicked
+            const buttonElement = e.target.closest('.readBtn');
+            if (!buttonElement) return; // Exit if no button found
+            
+            // Get the parent book div
+            const bookDiv = buttonElement.closest('.bookDiv');
+            if (!bookDiv) return; // Exit if no book div found
+            
+            const bookId = bookDiv.id;
+            
+            // Find the book in myLibrary array
+            const book = myLibrary.find(b => b.id === bookId);
+            
+            if (book) {
+                // Toggle the book's read status
+                book.toggleRead();
+                
+                // Update the button UI
+                buttonElement.innerHTML = book.read ? `
+                <div>
+                    <i class="material-symbols-outlined">select_check_box</i>
+                    Read
+                </div>
+                ` : `
+                <div>
+                    <i class="material-symbols-outlined">check_box_outline_blank</i>
+                    Not Read
+                </div>
+                `;
+                buttonElement.id = book.read ? "readTrue" : "readFalse";
+            }
+        });
+    });
 }
 
 
